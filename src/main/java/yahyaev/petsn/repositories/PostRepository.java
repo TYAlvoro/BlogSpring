@@ -1,2 +1,4 @@
-package yahyaev.petsn.repositories;public class PostRepository {
+package yahyaev.petsn.repositories;
+
+public class PostRepository {
 }

@@ -1,2 +1,4 @@
-package yahyaev.petsn.services;public class PostService {
+package yahyaev.petsn.services;
+
+public class PostService {
 }

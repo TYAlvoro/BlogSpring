@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог - все посты</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+        .post-preview {
+            border: 1px solid #dee2e6;
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Блог</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/new-post}">Новый пост</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container my-5">
+    <div class="post-preview">
+        <h2 class="post-title">Пост-заглушка</h2>
+        <p class="post-content">Пример превью. Дальше-бол...</p>
+        <a href="/post/1" class="btn btn-primary">Читать &rarr;</a>
+    </div>
+</main>
+
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+    <div class="container">
+        <p class="mb-0">&copy; 2024 Блог. All Rights Reserved</p>
+    </div>
+</footer>
+
+</body>
+</html>
