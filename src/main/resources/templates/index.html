@@ -44,10 +44,10 @@
 </nav>
 
 <main class="container my-5">
-    <div class="post-preview">
-        <h2 class="post-title">Пост-заглушка</h2>
-        <p class="post-content">Пример превью. Дальше-бол...</p>
-        <a href="/post/1" class="btn btn-primary">Читать &rarr;</a>
+    <div th:each="el: ${posts}" class="post-preview">
+        <h2 th:text="${el.title}" class="post-title"/>
+        <p th:text="${el.preview}" class="post-content"/>
+        <a th:href="'/post/' + ${el.id}" class="btn btn-primary">Читать &rarr;</a>
     </div>
 </main>
 
