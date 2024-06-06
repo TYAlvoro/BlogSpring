@@ -32,8 +32,10 @@ public class MainController {
     @PostMapping("/new-post")
     public String addNewPost(@ModelAttribute("post") Post post) {
         String preview = post.getPreview();
-        preview += "...";
-        post.setPreview(preview);
+        if (!preview.endsWith("...")) {
+            preview += "...";
+            post.setPreview(preview);
+        }
         postRepository.save(post);
         return "redirect:/main";
     }
@@ -43,6 +45,24 @@ public class MainController {
         var post = postRepository.findById(id);
         model.addAttribute("post", post.get());
         return "view-post";
+    }
+
+    @GetMapping("/edit-post/{id}")
+    public String editPost(@PathVariable long id, Model model) {
+        var post = postRepository.findById(id);
+        model.addAttribute("post", post.get());
+        return "edit-post";
+    }
+
+    @PostMapping("/edit-post/{id}")
+    public String editOldPost(@ModelAttribute("post") Post post) {
+        String preview = post.getPreview();
+        if (!preview.endsWith("...")) {
+            preview += "...";
+            post.setPreview(preview);
+        }
+        postRepository.save(post);
+        return "redirect:/view-post/" + post.getId();
     }
 
 }

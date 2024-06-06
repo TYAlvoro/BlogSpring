@@ -3,24 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Просмотр поста</title>
+    <title>Изменить пост</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        main {
-            flex: 1;
-        }
-        .post-preview {
-            border: 1px solid #dee2e6;
-            padding: 1.5rem;
-            border-radius: 0.25rem;
-            margin-bottom: 2rem;
-        }
-    </style>
 </head>
 <body>
 
@@ -44,20 +28,27 @@
 </nav>
 
 <main class="container my-5">
-    <div class="post-preview">
-        <h1 class="mb-4" th:text="${post.title}"/>
-        <h2 class="mb-4" th:text="${post.preview}"/>
-        <p th:text="${post.content}"/>
-        <div class="action-buttons">
-            <a th:href="'/edit-post/' + ${post.id}" class="btn btn-primary">Изменить</a>
-            <a th:href="@{/delete-post/${post.id}}" class="btn btn-danger">Удалить</a>
+    <h1 class="mb-4">Создать новый пост</h1>
+    <form th:action="@{'/edit-post/' + ${post.id}}" method="post">
+        <div class="form-group">
+            <label for="postTitle">Заголовок</label>
+            <input name="title" type="text" class="form-control" id="postTitle" placeholder="Введите заголовок..." th:value="${post.title}"/>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="postPreview">Превью</label>
+            <input maxlength="50" name="preview" type="text" class="form-control" id="postPreview" placeholder="Введите превью поста..." th:value="${post.preview}"/>
+        </div>
+        <div class="form-group">
+            <label for="postContent">Содержание</label>
+            <textarea name="content" class="form-control" id="postContent" rows="10" placeholder="Введите содержание поста..." th:text="${post.content}"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
 </main>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
     <div class="container">
-        <p class="mb-0">&copy; 2024 Блог. All Rights Reserved</p>
+        <p class="mb-0">&copy; 2024 Блог. Все права защищены</p>
     </div>
 </footer>
 
